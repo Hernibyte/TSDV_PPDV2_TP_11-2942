@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+interface IHittable{
+    void TakeDamage(float damage);
+}
+
 public class Character : MonoBehaviour
 {
     //public ShootType shootType;
@@ -8,10 +12,11 @@ public class Character : MonoBehaviour
     public float speed;
     private Vector3 targetPos;
 
-    public void Shoot_Default(Vector3 direction){
+    public void Shoot_Default(ShootLayer _shootLayer, float _damage){
         if(Input.GetKeyDown(KeyCode.E)){
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
             bulletGo.myDirection = Bullet.Direction.Up;
+            bulletGo.shootLayer = _shootLayer;
         }
     }
 

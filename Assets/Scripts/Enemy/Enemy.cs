@@ -2,19 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character, IHittable
+public class Enemy : MonoBehaviour, IHittable
 {
     [SerializeField] float energy = 100f;
-    [SerializeField] float damage;
-
-    void Update(){
-        Shoot_Default(ShootLayer.Player, damage);
-    }
-
-    void LateUpdate()
-    {
-        Movement_Clamped(speed);
-    }
 
     public void TakeDamage(float damage){
         energy -= damage;
@@ -23,6 +13,6 @@ public class Player : Character, IHittable
 
     void If_Die(){
         if(energy <= 0f)
-            Destroy(this);
+            Destroy(gameObject);
     }
 }

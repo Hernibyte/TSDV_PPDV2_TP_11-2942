@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ShootLayer{
+    Player,
+    Enemy
+}
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
@@ -10,7 +15,15 @@ public class Bullet : MonoBehaviour
         Up,
         Down
     }
-    public Direction myDirection;
+    [HideInInspector] public Direction myDirection;
+    [HideInInspector] public ShootLayer shootLayer;
+    [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask enemyLayer;
+    [HideInInspector] public float localDamage = 20f;
+
+    void Awake(){
+        shootLayer = ShootLayer.Enemy;
+    }
 
     void LateUpdate(){
         switch (myDirection)
@@ -23,4 +36,32 @@ public class Bullet : MonoBehaviour
                 break;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider){
+        switch(shootLayer){
+            case ShootLayer.Enemy:
+
+                if(Contains(playerLayer, collider.gameObject.layer)){
+                    IHittable hit = collider.GetComponent<IHittable>();
+                    hit.TakeDamage(localDamage);
+                    Destroy(this.gameObject);
+                }
+
+            break;
+            case ShootLayer.Player:
+
+                if (Contains(enemyLayer, collider.gameObject.layer)){
+                    IHittable hit = collider.GetComponent<IHittable>();
+                    hit.TakeDamage(localDamage);
+                    Destroy(this.gameObject);
+                }
+
+            break;
+        }
+    }
+
+    public bool Contains(LayerMask mask, int layer){
+        return mask == (mask | (1 << layer));
+    }
+
 }
