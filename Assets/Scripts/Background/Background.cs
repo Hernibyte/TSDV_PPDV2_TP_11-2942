@@ -6,10 +6,6 @@ public class Background : MonoBehaviour
 {
     [SerializeField] float speed;
 
-    void Awake(){
-        
-    }
-
     void LateUpdate(){
         transform.localPosition += new Vector3(0f, -speed, 0f);
 
