@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
     [SerializeField] Bullet bullet;
     [SerializeField] float shootSpawnPosition;
     public float speed;
+    private Vector3 targetPos;
 
     public void Shoot_Default(Vector3 direction){
         if(Input.GetKeyDown(KeyCode.E)){
@@ -26,9 +27,17 @@ public class Character : MonoBehaviour
             readyToShoot = false;
         }
     }
-    public void Movement_Target(Transform target, float speed)
+    public Vector3 Movement_Target(Transform target, ref bool lastPosSelected)
     {
+        if (!lastPosSelected)
+        {
+            targetPos = target.position;
+            lastPosSelected = true;
+        }
 
+       transform.position = Vector3.MoveTowards(transform.position, targetPos, (speed * 3) * Time.deltaTime);
+
+        return targetPos;
     }
 
     public void Movement_Clamped(float speed){
