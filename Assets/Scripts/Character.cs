@@ -6,7 +6,6 @@ interface IHittable{
 
 public class Character : MonoBehaviour
 {
-    //public ShootType shootType;
     [SerializeField] Bullet bullet;
     [SerializeField] float shootSpawnPosition;
     public float speed;
@@ -32,6 +31,7 @@ public class Character : MonoBehaviour
             readyToShoot = false;
         }
     }
+
     public Vector3 Movement_Target(Transform target, ref bool lastPosSelected)
     {
         if (!lastPosSelected)

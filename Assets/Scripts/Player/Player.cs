@@ -7,6 +7,8 @@ public class Player : Character, IHittable
     [SerializeField] float energy = 100f;
     [SerializeField] float damage;
 
+    
+
     void Update(){
         Shoot_Default(ShootLayer.Player, damage);
     }
@@ -23,6 +25,11 @@ public class Player : Character, IHittable
 
     void If_Die(){
         if(energy <= 0f)
-            Destroy(this);
+            Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

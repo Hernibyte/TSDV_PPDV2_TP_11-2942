@@ -1,26 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class PowerUP : Item
-{
-    public enum TypePowerUP
+public enum TypePowerUP
     {
         Explosion,
         RestoreEnergy,
         IncrementDamage,
-        IncrementFireRate,
         Points_X2,
         Points_X3,
         Points_X4,
-        Points_X10
-    }
-    public TypePowerUP myType;
-
-    public void SpawnPowerUP(float posX, float posY)
-    {
-        transform.position = new Vector2(posX, posY);
+        Points_X10,
+        SimpleShoot,
+        BurstShoot,
+        ConeShoot,
+        BeamShoot
     }
 
-    public void MoveItem()
-    {
+public class PowerUp : MonoBehaviour
+{
+    [SerializeField] float speed = 2f;
+    public TypePowerUP typePowerUP;
+
+    public void ChangeTypePowerUp(TypePowerUP type){
+        typePowerUP = type;
+    }
+
+    void LateUpdate(){
+        transform.position += -transform.up * speed;
     }
 }
