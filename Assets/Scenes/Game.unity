@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -500,14 +500,17 @@ MonoBehaviour:
   bullet: {fileID: 6154241352899170613, guid: 88f4265c79bbfa6428fa96efc5c3eba4, type: 3}
   shootSpawnPosition: 5
   speed: 10
+  timer: 0.5
   energy: 100
-  damage: 100
+  damage: 10
+  explosionAmount: 0
   powerUp:
     serializedVersion: 2
     m_Bits: 1024
   shootType: {fileID: 0}
   consumible: {fileID: 0}
   pointsMultipler: {fileID: 0}
+  pointsMultiplerAmount: 1
 --- !u!4 &1185110818
 Transform:
   m_ObjectHideFlags: 0
@@ -1150,7 +1153,7 @@ PrefabInstance:
     - target: {fileID: 6355963091535233643, guid: a74316d4cfc21664aaae43365dc5cdd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -372
+      value: -361
       objectReference: {fileID: 0}
     - target: {fileID: 6355963091535233643, guid: a74316d4cfc21664aaae43365dc5cdd0,
         type: 3}

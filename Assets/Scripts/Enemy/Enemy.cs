@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IHittable
         if(energy <= 0f)
         {
             SpawnPowerUp();
+            GameManager.Get()?.AddPoints(100);
             Destroy(gameObject);
         }
     }

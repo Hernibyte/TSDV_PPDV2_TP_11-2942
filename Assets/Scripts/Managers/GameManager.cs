@@ -22,6 +22,14 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] public List<PowerUp> allPowerUps;
+    [SerializeField] int gamePoints = 0;
+
+    public void AddPoints(int _points){
+        Player player = FindObjectOfType<Player>();
+        if(player != null){
+            gamePoints += _points * player.pointsMultiplerAmount;
+        }
+    }
 
     public PowerUp GetPowerUpPerID(int ID)
     {
