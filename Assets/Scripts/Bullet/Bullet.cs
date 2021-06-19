@@ -1,20 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum ShootLayer{
     Player,
     Enemy
 }
-
+public enum Direction
+{
+    Up,
+    Down
+}
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
-    public enum Direction
-    {
-        Up,
-        Down
-    }
     [HideInInspector] public Direction myDirection;
     [HideInInspector] public ShootLayer shootLayer;
     [SerializeField] LayerMask playerLayer;
