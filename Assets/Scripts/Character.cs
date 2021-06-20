@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 interface IHittable
 {
@@ -13,7 +13,12 @@ public class Character : MonoBehaviour
     public float speed;
     private Vector3 targetPos;
     public float timer = 0.5f;
+    [SerializeField] ScreenShake cameraShake;
 
+    private void Start()
+    {
+        cameraShake = Camera.main.GetComponent<ScreenShake>();
+    }
     public void CalculateFireRateShoot(){
         timer += Time.deltaTime;
     }
@@ -26,6 +31,7 @@ public class Character : MonoBehaviour
             bulletGo.localDamage = _damage;
             bulletGo.shootLayer = _shootLayer;
             timer = 0f;
+            StartCoroutine(cameraShake?.CameraShake(.2f, 4f));
         }
     }
 
@@ -39,6 +45,7 @@ public class Character : MonoBehaviour
     IEnumerator Burst(ShootLayer _shootLayer, float _damage){
         for(int i = 0; i < 3; i++){
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
+            StartCoroutine(cameraShake.CameraShake(.2f, 2f));
             bulletGo.myDirection = Direction.Up;
             bulletGo.localDamage = _damage;
             bulletGo.shootLayer = _shootLayer;
@@ -53,7 +60,7 @@ public class Character : MonoBehaviour
             Quaternion a = new Quaternion(0f, 0f, -0.4f, 1f);
             Quaternion b = new Quaternion(0f, 0f, 1f, 1f);
 
-            for(int i = 0; i < 8; i-=-1){
+            for (int i = 0; i < 8; i-=-1){
                 Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), a);
                 bulletGo.myDirection = Direction.Up;
                 bulletGo.localDamage = _damage;
@@ -61,6 +68,7 @@ public class Character : MonoBehaviour
                 a = Quaternion.Lerp(a, b, 1f/10f);
             }
             timer = 0f;
+            StartCoroutine(cameraShake?.CameraShake(.2f, 4f));
         }
     }
     public void Shoot_Type(SpecificPowerUp _type, ShootLayer _shootLayer, float _damage)
@@ -75,9 +83,6 @@ public class Character : MonoBehaviour
                 break;
             case SpecificPowerUp.ConeShoot:
                 Shoot_Cono(_shootLayer, _damage);
-                break;
-            case SpecificPowerUp.BeamShoot:
-
                 break;
         }
     }

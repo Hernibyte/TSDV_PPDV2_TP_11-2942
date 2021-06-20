@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public enum SpecificPowerUp
 {
     Explosion,
@@ -13,7 +12,6 @@ public enum SpecificPowerUp
     SimpleShoot,
     BurstShoot,
     ConeShoot,
-    BeamShoot
 }
 
 public enum TypePowerUP

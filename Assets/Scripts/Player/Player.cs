@@ -14,10 +14,9 @@ public class Player : Character, IHittable
     float pointsMultiplerTimer = 0f;
     bool pointsMultiplerAppled = false;
 
-
     private void Start()
     {
-        shootType = GameManager.Get()?.GetPowerUpPerID(9);
+        shootType = GameManager.Get()?.GetPowerUpPerID(8);
     }
 
     void Update(){

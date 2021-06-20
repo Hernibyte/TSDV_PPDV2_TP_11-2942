@@ -35,7 +35,9 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider){
-        switch(shootLayer){
+
+        switch (shootLayer)
+        {
             case ShootLayer.Enemy:
 
                 if(Contains(playerLayer, collider.gameObject.layer)){
@@ -44,7 +46,7 @@ public class Bullet : MonoBehaviour
                     Destroy(this.gameObject);
                 }
 
-            break;
+                break;
             case ShootLayer.Player:
 
                 if (Contains(enemyLayer, collider.gameObject.layer)){
