@@ -100,14 +100,35 @@ public class Character : MonoBehaviour
         }
     }
 
-    public Vector3 Movement_Target(Transform target, ref bool lastPosSelected)
+    public Vector3 Movement_Target(Vector3 target, ref bool lastPosSelected)
     {
         if (!lastPosSelected)
         {
-            targetPos = target.position;
+            targetPos = target;
             lastPosSelected = true;
         }
 
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, (speed * 3) * Time.deltaTime);
+
+        return targetPos;
+    }
+
+    public Vector3 Movement_PointToPoint(Vector3 targetA, Vector3 targetB, RespawnPoint myStartPoint, ref bool lastPosSelected)
+    {
+        if (!lastPosSelected)
+        {
+            switch (myStartPoint.respawnID)
+            {
+                case 1:
+                targetPos = new Vector3(targetB.x,targetA.y, targetA.z);
+                    break;
+                case 2:
+                targetPos = new Vector3(targetA.x, targetB.y, targetB.z);
+                    break;
+            }
+            lastPosSelected = true;
+        }
+        //targetPos = new Vector3(targetPos.x,Mathf.Sin(targetPos.y), targetPos.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, (speed * 3) * Time.deltaTime);
 
         return targetPos;

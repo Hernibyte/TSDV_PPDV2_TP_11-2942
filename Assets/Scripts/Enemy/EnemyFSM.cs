@@ -21,6 +21,9 @@ public class EnemyFSM : Character
     [SerializeField] private float timePerShoot;
     [SerializeField] private float distanceToGoBack;
     [SerializeField] private float distanceToGoTarget;
+    [HideInInspector] public RespawnPoint myRespawnPoint;
+    [HideInInspector] public RespawnPoint respawnA;
+    [HideInInspector] public RespawnPoint respawnB;
 
     private Vector3 lastPosTarget;
 
@@ -40,9 +43,11 @@ public class EnemyFSM : Character
 
         switch (myType)
         {
-            case EnemyType.EnemyA: EnemyA_Behaviour();
+            case EnemyType.EnemyA:
+                EnemyA_Behaviour();
                 break;
             case EnemyType.EnemyB:
+                EnemyB_Behaviour();
                 break;
             case EnemyType.BossEnemy:
                 break;
@@ -56,7 +61,7 @@ public class EnemyFSM : Character
             case EnemyState.GoingToTarget:
 
                 if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
-                    lastPosTarget = Movement_Target(targetEnemy.transform, ref targetSet);
+                    lastPosTarget = Movement_Target(targetEnemy.transform.position, ref targetSet);
                 else
                     myState = EnemyState.Attacking;
 
@@ -86,26 +91,35 @@ public class EnemyFSM : Character
         {
             case EnemyState.GoingToTarget:
 
-                if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
-                    lastPosTarget = Movement_Target(targetEnemy.transform, ref targetSet);
+                if (transform.position != lastPosTarget)
+                {
+                    if (myRespawnPoint != null)
+                        lastPosTarget = Movement_PointToPoint(respawnA.transform.position, respawnB.transform.position, myRespawnPoint, ref targetSet);
+                }
                 else
+                    myState = EnemyState.GoingBack;
+
+
+                if (transform.position == (lastPosTarget * 0.5f))
                     myState = EnemyState.Attacking;
 
                 break;
             case EnemyState.Attacking:
 
                 Shoot_Target(targetEnemy.transform, ref readyToShoot);
-                myState = EnemyState.GoingBack;
+                myState = EnemyState.GoingToTarget;
 
                 break;
             case EnemyState.GoingBack:
-
-                if (Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
-                    transform.position += new Vector3(0, speed * Time.deltaTime, 0);
-                else
+                if (myRespawnPoint != null)
                 {
-                    myState = EnemyState.GoingToTarget;
-                    targetSet = false;
+                    if (transform.position != myRespawnPoint.transform.position)
+                        transform.position = Vector3.MoveTowards(transform.position, myRespawnPoint.transform.position, (speed * 3) * Time.deltaTime);
+                    else
+                    {
+                        myState = EnemyState.GoingToTarget;
+                        targetSet = false;
+                    }
                 }
                 break;
         }

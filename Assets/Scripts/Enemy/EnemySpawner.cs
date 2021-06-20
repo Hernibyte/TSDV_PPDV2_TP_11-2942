@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public EnemyType enemiesIWillRespawn;
     [SerializeField] public float timePerRespawn;
     [SerializeField] private int enemiesRespawned;
-    [SerializeField][Tooltip("Only needed if enemy is ENEMY_B")] private Transform pointA;
-    [SerializeField][Tooltip("Only needed if enemy is ENEMY_B")] private Transform pointB;
+    [SerializeField][Tooltip("Only needed if enemy is ENEMY_B")] public RespawnPoint pointA;
+    [SerializeField][Tooltip("Only needed if enemy is ENEMY_B")] public RespawnPoint pointB;
     [Header("ENEMY TO RESPAWN (PREFAB)")]
     [SerializeField] public EnemyFSM enemy;
     private float timer;
@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
         enemiesRespawned = 0;
         if (GameManager.Get() != null)
             enemiesINeedRespawn = Mathf.RoundToInt(GameManager.Get().amountEnemiesLevel_1 * 0.5f);
+        timer = timePerRespawn;
     }
 
     private void Update()
@@ -53,6 +54,22 @@ public class EnemySpawner : MonoBehaviour
 
     public void RespawnEnemyB()
     {
-
+        EnemyFSM enemyCreated;
+        Vector3 pointAVec =pointA.transform.position;
+        Vector3 pointBVec =pointB.transform.position;
+        int randomSpawnPoint = Random.Range(0, 100);
+        if(randomSpawnPoint <= 50)
+        {
+            enemyCreated = Instantiate(enemy, pointAVec, Quaternion.identity);
+            enemyCreated.myRespawnPoint = pointA;
+            
+        }
+        else
+        {
+            enemyCreated = Instantiate(enemy, pointBVec, Quaternion.identity);
+            enemyCreated.myRespawnPoint = pointB;
+        }
+        enemyCreated.respawnA = pointA;
+        enemyCreated.respawnB = pointB;
     }
 }

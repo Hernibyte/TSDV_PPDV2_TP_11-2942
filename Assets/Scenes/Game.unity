@@ -644,6 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284975324}
   - component: {fileID: 1284975325}
+  - component: {fileID: 1284975326}
   m_Layer: 0
   m_Name: PointB
   m_TagString: Untagged
@@ -659,7 +660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284975323}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1200, y: -100, z: 0}
+  m_LocalPosition: {x: -1200, y: -300, z: 0}
   m_LocalScale: {x: 150, y: 150, z: 1}
   m_Children: []
   m_Father: {fileID: 1819104409}
@@ -715,6 +716,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1284975326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284975323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4b50e3243e1f64db50d813dd09a390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnID: 2
 --- !u!1 &1351512438
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364271409}
   - component: {fileID: 1364271410}
+  - component: {fileID: 1364271411}
   m_Layer: 0
   m_Name: PointA
   m_TagString: Untagged
@@ -885,6 +900,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1364271411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364271408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4b50e3243e1f64db50d813dd09a390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnID: 1
 --- !u!1 &1406429019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1199,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1660976885
 Transform:
   m_ObjectHideFlags: 0
@@ -1302,8 +1330,8 @@ MonoBehaviour:
   enemiesIWillRespawn: 1
   timePerRespawn: 2
   enemiesRespawned: 0
-  pointA: {fileID: 1364271409}
-  pointB: {fileID: 1284975324}
+  pointA: {fileID: 1364271411}
+  pointB: {fileID: 1284975326}
   enemy: {fileID: 8089305704625963699, guid: 9e6bb621c7b75614d9c8873ebfc577e2, type: 3}
 --- !u!1 &1845355775
 GameObject:

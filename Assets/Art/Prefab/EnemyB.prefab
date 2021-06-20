@@ -139,6 +139,9 @@ MonoBehaviour:
   timePerShoot: 2
   distanceToGoBack: 100
   distanceToGoTarget: 200
+  myRespawnPoint: {fileID: 0}
+  respawnA: {fileID: 0}
+  respawnB: {fileID: 0}
   myState: 0
   myType: 1
 --- !u!114 &5198375919756372798
@@ -165,7 +168,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
