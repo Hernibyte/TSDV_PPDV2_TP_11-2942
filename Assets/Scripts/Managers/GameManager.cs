@@ -21,14 +21,24 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    [Header("POWER UPS LIST")]
     [SerializeField] public List<PowerUp> allPowerUps;
+    [Header("PLAYER SCORE")]
     [SerializeField] int gamePoints = 0;
+    [Header("ENEMIES IN LEVEL")]
+    [SerializeField] public int amountEnemiesLevel_1;
 
     public void AddPoints(int _points){
         Player player = FindObjectOfType<Player>();
         if(player != null){
             gamePoints += _points * player.pointsMultiplerAmount;
         }
+    }
+
+    public void DecreaseEnemyCount()
+    {
+        if(amountEnemiesLevel_1 > 0)
+            amountEnemiesLevel_1--;
     }
 
     public PowerUp GetPowerUpPerID(int ID)

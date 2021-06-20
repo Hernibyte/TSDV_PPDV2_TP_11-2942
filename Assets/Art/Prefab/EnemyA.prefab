@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6355963091535233640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 500, z: 0}
+  m_LocalPosition: {x: -361, y: 693, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6355963092254948603}
@@ -47,12 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05cc9f01192b4145b7a800481ea8d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 6154241352899170613, guid: 88f4265c79bbfa6428fa96efc5c3eba4, type: 3}
   shootSpawnPosition: -4
-  speed: 6
+  speed: 80
+  timer: 0.5
+  cameraShake: {fileID: 0}
   targetEnemy: {fileID: 0}
   readyToShoot: 0
-  timePerShoot: 0
+  targetSet: 0
+  timePerShoot: 2
+  distanceToGoBack: 100
+  distanceToGoTarget: 200
+  myState: 0
 --- !u!114 &6940681680574475239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a759e9a71820e46b1e855706786853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energy: 100
+  spawnPowerUpProbability: 100
 --- !u!60 &8230247015262213366
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +204,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1c473956fcf8085499facb5cd60b6482, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

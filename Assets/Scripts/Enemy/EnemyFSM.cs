@@ -1,4 +1,17 @@
 ﻿using UnityEngine;
+public enum EnemyState
+{
+    GoingToTarget,
+    Attacking,
+    GoingBack
+}
+
+public enum EnemyType
+{
+    EnemyA,
+    EnemyB,
+    BossEnemy
+}
 
 public class EnemyFSM : Character
 {
@@ -10,58 +23,99 @@ public class EnemyFSM : Character
     [SerializeField] private float distanceToGoTarget;
 
     private Vector3 lastPosTarget;
-    public enum State
-    {
-        GoingToTarget,
-        Attacking,
-        GoingBack
-    }
-    public State myState;
+
+    public EnemyState myState;
+    public EnemyType myType;
     private float timerToShoot;
 
     private void Start()
     {
         targetSet = false;
+        targetEnemy = FindObjectOfType<Player>();
     }
 
     public void Update()
     {
         CalcTimePerShoot();
 
+        switch (myType)
+        {
+            case EnemyType.EnemyA: EnemyA_Behaviour();
+                break;
+            case EnemyType.EnemyB:
+                break;
+            case EnemyType.BossEnemy:
+                break;
+        }
+    }
+
+    public void EnemyA_Behaviour()
+    {
         switch (myState)
         {
-            case State.GoingToTarget:
+            case EnemyState.GoingToTarget:
 
                 if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
                     lastPosTarget = Movement_Target(targetEnemy.transform, ref targetSet);
                 else
-                    myState = State.Attacking;
+                    myState = EnemyState.Attacking;
 
                 break;
-            case State.Attacking:
+            case EnemyState.Attacking:
 
                 Shoot_Target(targetEnemy.transform, ref readyToShoot);
-                myState = State.GoingBack;
+                myState = EnemyState.GoingBack;
 
                 break;
-            case State.GoingBack:
+            case EnemyState.GoingBack:
 
-                if(Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
+                if (Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
                     transform.position += new Vector3(0, speed * Time.deltaTime, 0);
                 else
                 {
-                    myState = State.GoingToTarget;
+                    myState = EnemyState.GoingToTarget;
                     targetSet = false;
                 }
                 break;
         }
-
     }
+
+    public void EnemyB_Behaviour()
+    {
+        switch (myState)
+        {
+            case EnemyState.GoingToTarget:
+
+                if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
+                    lastPosTarget = Movement_Target(targetEnemy.transform, ref targetSet);
+                else
+                    myState = EnemyState.Attacking;
+
+                break;
+            case EnemyState.Attacking:
+
+                Shoot_Target(targetEnemy.transform, ref readyToShoot);
+                myState = EnemyState.GoingBack;
+
+                break;
+            case EnemyState.GoingBack:
+
+                if (Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
+                    transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+                else
+                {
+                    myState = EnemyState.GoingToTarget;
+                    targetSet = false;
+                }
+                break;
+        }
+    }
+
     public void CalcTimePerShoot()
     {
         if (timerToShoot <= timePerShoot)
             timerToShoot += Time.deltaTime;
-        else if(timerToShoot >= timePerShoot && myState == State.Attacking)
+        else if (timerToShoot >= timePerShoot && myState == EnemyState.Attacking)
         {
             readyToShoot = true;
             timerToShoot = 0;
