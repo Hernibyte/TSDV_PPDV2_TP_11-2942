@@ -89,6 +89,9 @@ public class EnemyFSM : Character
 
     public void EnemyB_Behaviour()
     {
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation(transform.forward, -targetEnemy.transform.position.normalized), speed * Time.deltaTime);
+
         switch (myState)
         {
             case EnemyState.GoingToTarget:
@@ -110,6 +113,7 @@ public class EnemyFSM : Character
             case EnemyState.Attacking:
 
                 Shoot_Target(targetEnemy.transform, ref readyToShoot);
+
                 shootFlag = true;
                 myState = EnemyState.GoingToTarget;
 
@@ -118,7 +122,9 @@ public class EnemyFSM : Character
                 if (myRespawnPoint != null)
                 {
                     if (transform.position != myRespawnPoint.transform.position)
+                    {
                         transform.position = Vector3.MoveTowards(transform.position, myRespawnPoint.transform.position, (speed * 3) * Time.deltaTime);
+                    }
                     else
                     {
                         myState = EnemyState.GoingToTarget;
