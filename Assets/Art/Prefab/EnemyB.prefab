@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6154241352899170613, guid: 88f4265c79bbfa6428fa96efc5c3eba4, type: 3}
   shootSpawnPosition: -4
-  speed: 80
+  speed: 200
   timer: 0.5
   cameraShake: {fileID: 0}
   targetEnemy: {fileID: 0}

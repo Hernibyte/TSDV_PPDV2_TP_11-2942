@@ -26,6 +26,7 @@ public class EnemyFSM : Character
     [HideInInspector] public RespawnPoint respawnB;
 
     private Vector3 lastPosTarget;
+    private bool shootFlag;
 
     public EnemyState myState;
     public EnemyType myType;
@@ -33,6 +34,7 @@ public class EnemyFSM : Character
 
     private void Start()
     {
+        shootFlag = false;
         targetSet = false;
         targetEnemy = FindObjectOfType<Player>();
     }
@@ -100,13 +102,15 @@ public class EnemyFSM : Character
                     myState = EnemyState.GoingBack;
 
 
-                if (transform.position == (lastPosTarget * 0.5f))
+                if (transform.position.x >= (lastPosTarget.x * 0.2f) && !shootFlag)
                     myState = EnemyState.Attacking;
 
+                Debug.Log(lastPosTarget * 0.5f);
                 break;
             case EnemyState.Attacking:
 
                 Shoot_Target(targetEnemy.transform, ref readyToShoot);
+                shootFlag = true;
                 myState = EnemyState.GoingToTarget;
 
                 break;
@@ -119,6 +123,7 @@ public class EnemyFSM : Character
                     {
                         myState = EnemyState.GoingToTarget;
                         targetSet = false;
+                        shootFlag = false;
                     }
                 }
                 break;
