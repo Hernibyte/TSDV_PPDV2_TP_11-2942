@@ -108,7 +108,7 @@ public class EnemyFSM : Character
                 if (transform.position.x >= (lastPosTarget.x * 0.2f) && !shootFlag)
                     myState = EnemyState.Attacking;
 
-                Debug.Log(lastPosTarget * 0.5f);
+                //Debug.Log(lastPosTarget * 0.5f);
                 break;
             case EnemyState.Attacking:
 
