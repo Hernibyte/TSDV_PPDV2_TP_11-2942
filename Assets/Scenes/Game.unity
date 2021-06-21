@@ -575,8 +575,8 @@ MonoBehaviour:
   speed: 10
   timer: 0.5
   cameraShake: {fileID: 969072390}
-  energy: 100
-  damage: 10
+  energy: 100000
+  damage: 60
   explosionAmount: 0
   powerUp:
     serializedVersion: 2

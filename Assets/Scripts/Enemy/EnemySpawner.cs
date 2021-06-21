@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesRespawned = 0;
         if (GameManager.Get() != null)
-            enemiesINeedRespawn = Mathf.RoundToInt(GameManager.Get().amountEnemiesLevel_1 * 0.5f);
+            enemiesINeedRespawn = (int)(GameManager.Get().amountEnemiesLevel_1 * 0.5f);
         timer = timePerRespawn;
     }
 
@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
             timer += Time.deltaTime;
         else
         {
-            if(enemiesRespawned <= enemiesINeedRespawn)
+            if(enemiesRespawned < enemiesINeedRespawn)
             {
 
                 switch (enemiesIWillRespawn)    
