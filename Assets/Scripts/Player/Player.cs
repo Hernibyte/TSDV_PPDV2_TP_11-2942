@@ -16,7 +16,7 @@ public class Player : Character, IHittable
 
     private void Start()
     {
-        shootType = GameManager.Get()?.GetPowerUpPerID(8);
+        shootType = GameManager.Get()?.GetPowerUpPerID(9);
     }
 
     void Update(){
