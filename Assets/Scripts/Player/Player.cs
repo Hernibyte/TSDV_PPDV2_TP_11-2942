@@ -63,6 +63,12 @@ public class Player : Character, IHittable
                 energy = 100f;
 
             break;
+            case SpecificPowerUp.IncreamentFireRate:
+
+                if(fireRate > 0.2f)
+                    fireRate -= 0.1f;
+
+                break;
         }
         consumible = null;
     }

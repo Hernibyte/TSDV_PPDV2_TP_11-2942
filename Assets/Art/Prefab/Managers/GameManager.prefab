@@ -54,5 +54,6 @@ MonoBehaviour:
   - {fileID: 1331595462152647262, guid: 9371a7e4413b27a438970f7ea0e20819, type: 3}
   - {fileID: 3422414208997741455, guid: 6a4bf2650f8269947a50655463f58616, type: 3}
   - {fileID: 5641323419450375099, guid: b45edae42ae90b44da66992b16344750, type: 3}
+  - {fileID: 492866983677904659, guid: cc57d7046c518a0429f46642b419ef1b, type: 3}
   gamePoints: 0
   amountEnemiesLevel_1: 0

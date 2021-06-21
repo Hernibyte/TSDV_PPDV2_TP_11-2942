@@ -12,6 +12,7 @@ public enum SpecificPowerUp
     SimpleShoot,
     BurstShoot,
     ConeShoot,
+    IncreamentFireRate
 }
 
 public enum TypePowerUP

@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] Bullet bullet;
     [SerializeField] float shootSpawnPosition;
-    [SerializeField] float fireRate;
+    [SerializeField] public float fireRate;
     public float speed;
     private Vector3 targetPos;
     public float timer = 0.5f;
