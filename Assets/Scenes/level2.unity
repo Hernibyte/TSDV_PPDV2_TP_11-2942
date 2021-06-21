@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 1
-  timePerRespawn: 8
+  timePerRespawn: 1
   enemiesRespawned: 0
   pointA: {fileID: 275723373}
   pointB: {fileID: 624585210}
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 0
-  timePerRespawn: 16
+  timePerRespawn: 1
   enemiesRespawned: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 0
-  timePerRespawn: 10
+  timePerRespawn: 1
   enemiesRespawned: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6154241352899170613, guid: 88f4265c79bbfa6428fa96efc5c3eba4, type: 3}
   shootSpawnPosition: 5
+  fireRate: 0.4
   speed: 10
   timer: 0.5
   cameraShake: {fileID: 355398721}
@@ -1714,7 +1715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 1
-  timePerRespawn: 5
+  timePerRespawn: 1
   enemiesRespawned: 0
   pointA: {fileID: 1805052025}
   pointB: {fileID: 1402609725}

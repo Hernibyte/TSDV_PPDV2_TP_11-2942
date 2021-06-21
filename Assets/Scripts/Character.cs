@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] Bullet bullet;
     [SerializeField] float shootSpawnPosition;
+    [SerializeField] float fireRate;
     public float speed;
     private Vector3 targetPos;
     public float timer = 0.5f;
@@ -17,6 +18,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        fireRate = 1.0f;
         cameraShake = Camera.main.GetComponent<ScreenShake>();
     }
     public void CalculateFireRateShoot(){
@@ -25,7 +27,8 @@ public class Character : MonoBehaviour
 
     void Shoot_Default(ShootLayer _shootLayer, float _damage)
     {
-        if(timer > 0.5f){
+        if(timer > fireRate * 0.5f)
+        {
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
             bulletGo.myDirection = Direction.Up;
             bulletGo.localDamage = _damage;
@@ -36,7 +39,8 @@ public class Character : MonoBehaviour
     }
 
     void Shoot_Burst(ShootLayer _shootLayer, float _damage){
-        if(timer > 1f){
+        if(timer > fireRate)
+        {
             StartCoroutine(Burst(_shootLayer, _damage));
             timer = 0f;
         }
@@ -56,7 +60,8 @@ public class Character : MonoBehaviour
     }
 
     void Shoot_Cono(ShootLayer _shootLayer, float _damage){
-        if(timer > 1f){
+        if(timer > fireRate)
+        {
             Quaternion a = new Quaternion(0f, 0f, -0.4f, 1f);
             Quaternion b = new Quaternion(0f, 0f, 1f, 1f);
 
