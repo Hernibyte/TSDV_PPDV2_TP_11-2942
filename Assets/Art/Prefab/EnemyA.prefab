@@ -53,6 +53,11 @@ MonoBehaviour:
   speed: 80
   timer: 0.5
   cameraShake: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  explosionPrefab: {fileID: 2704033692591571297, guid: 2edd2993f09bd594aa771090cdad4bfc,
+    type: 3}
   targetEnemy: {fileID: 0}
   readyToShoot: 0
   targetSet: 0

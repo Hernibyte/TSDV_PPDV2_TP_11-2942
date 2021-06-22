@@ -13,9 +13,10 @@ public class Player : Character, IHittable
     [HideInInspector] public int pointsMultiplerAmount = 1;
     float pointsMultiplerTimer = 0f;
     bool pointsMultiplerAppled = false;
-    public float restoreEnergy;
+    [HideInInspector] public float restoreEnergy;
 
     private bool restoringEnergy = false;
+    [SerializeField] ParticleSystem particle;
 
     public delegate void UpdateUIPlayer();
     public UpdateUIPlayer updateDataUI;
@@ -30,6 +31,13 @@ public class Player : Character, IHittable
         {
             if(shootType != null)
                 Shoot_Type(shootType.specificType, ShootLayer.Player, damage);
+        }
+        if(Input.GetKeyDown(KeyCode.Space)){
+            if(explosionAmount > 0){
+                ExplosionAttack();
+                particle.Play();
+                explosionAmount--;
+            }
         }
         PointsMultiplerInFunction();
         CalculateFireRateShoot();
@@ -175,8 +183,7 @@ public class Player : Character, IHittable
             Destroy(collision.gameObject);
         }
     }
-    public bool Contains(LayerMask mask, int layer)
-    {
+    public bool Contains(LayerMask mask, int layer) {
         return mask == (mask | (1 << layer));
     }
 }

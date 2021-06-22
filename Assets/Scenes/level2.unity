@@ -1732,6 +1732,16 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 355398721}
+    - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
+        type: 3}
+      propertyPath: explosionAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
+        type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 11729150262743858, guid: 11be5552e3e152b498f1ac3592ca9d47,
         type: 3}
       propertyPath: m_Name

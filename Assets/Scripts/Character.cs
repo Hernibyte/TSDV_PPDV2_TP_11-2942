@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     private Vector3 targetPos;
     public float timer = 0.5f;
     [SerializeField] ScreenShake cameraShake;
+    [SerializeField] LayerMask enemyMask;
+    [SerializeField] GameObject explosionPrefab;
 
     private void Start()
     {
@@ -23,6 +25,15 @@ public class Character : MonoBehaviour
     }
     public void CalculateFireRateShoot(){
         timer += Time.deltaTime;
+    }
+
+    public void ExplosionAttack(){
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 10000f, enemyMask);
+        foreach(Collider2D collider in hitColliders){
+            GameObject go = Instantiate(explosionPrefab, collider.transform.position, Quaternion.identity);
+            go.transform.localScale = new Vector3(150f, 150f, 0f);
+            Destroy(collider);
+        }
     }
 
     void Shoot_Default(ShootLayer _shootLayer, float _damage)
