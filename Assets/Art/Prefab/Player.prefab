@@ -58,7 +58,7 @@ MonoBehaviour:
     type: 3}
   energy: 100000
   damage: 50
-  explosionAmount: 2
+  explosionAmount: 0
   powerUp:
     serializedVersion: 2
     m_Bits: 1024
