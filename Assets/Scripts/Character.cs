@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
     }
 
     public void ExplosionAttack(){
+        AudioManager.Get()?.Play("explode");
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 10000f, enemyMask);
         foreach(Collider2D collider in hitColliders){
             GameObject go = Instantiate(explosionPrefab, collider.transform.position, Quaternion.identity);
