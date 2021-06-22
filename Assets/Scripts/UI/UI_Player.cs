@@ -6,6 +6,7 @@ public class UI_Player : MonoBehaviour
     [SerializeField] public TextMeshProUGUI points;
     [SerializeField] public TextMeshProUGUI typeShoot;
     [SerializeField] public TextMeshProUGUI amountNukes;
+    [SerializeField] public TextMeshProUGUI amountEnemies;
     [SerializeField] public GameObject panelPause;
     [SerializeField] public Image lifeBar;
 
@@ -24,6 +25,8 @@ public class UI_Player : MonoBehaviour
                 panelPause.SetActive(true);
             else
                 panelPause.SetActive(false);
+
+            amountEnemies.text = "Enemies:" + GameManager.Get().actualEnemiesAmount.ToString();
         }
     }
     private void OnDisable()
