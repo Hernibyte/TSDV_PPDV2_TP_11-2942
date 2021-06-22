@@ -38,9 +38,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int enemiesDestroyed;
     [SerializeField] private int powerUpsTaked;
     [SerializeField] private int bulletsFired;
+    [SerializeField] public bool gamePaused;
 
     private bool menuSongPlaying;
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
+    public bool IsGamePaused()
+    {
+        return gamePaused;
+    }
+    public void PauseGame()
+    {
+        gamePaused = !gamePaused;
+
+        if (gamePaused)
+        {
+            Time.timeScale = 0;
+            AudioManager.Get()?.Pause("game");
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioManager.Get()?.Play("game");
+        }
+    }
     public void SongMenuStarted()
     {
         menuSongPlaying = true;

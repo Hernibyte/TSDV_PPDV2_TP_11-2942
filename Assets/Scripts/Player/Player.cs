@@ -28,26 +28,40 @@ public class Player : Character, IHittable
     }
 
     void Update(){
-        if (Input.GetKey(KeyCode.E))
+        if (GameManager.Get() != null)
         {
-            if(shootType != null)
-                Shoot_Type(shootType.specificType, ShootLayer.Player, damage);
-        }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            if(explosionAmount > 0){
-                ExplosionAttack();
-                particle.Play();
-                explosionAmount--;
+            if (!GameManager.Get().IsGamePaused())
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    if (shootType != null)
+                        Shoot_Type(shootType.specificType, ShootLayer.Player, damage);
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (explosionAmount > 0)
+                    {
+                        ExplosionAttack();
+                        particle.Play();
+                        explosionAmount--;
+                    }
+                }
+                PointsMultiplerInFunction();
+                CalculateFireRateShoot();
             }
         }
-        PointsMultiplerInFunction();
-        CalculateFireRateShoot();
     }
 
     void LateUpdate()
     {
-        Movement_Clamped(speed);
-        RestoreEnergy();
+        if (GameManager.Get() != null)
+        {
+            if (!GameManager.Get().IsGamePaused())
+            {
+                Movement_Clamped(speed);
+                RestoreEnergy();
+            }
+        }
     }
 
     public void TakeDamage(float damage){

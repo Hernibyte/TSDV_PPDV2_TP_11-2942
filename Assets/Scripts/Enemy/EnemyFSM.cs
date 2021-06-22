@@ -41,18 +41,24 @@ public class EnemyFSM : Character
 
     public void Update()
     {
-        CalcTimePerShoot();
-
-        switch (myType)
+        if (GameManager.Get() != null)
         {
-            case EnemyType.EnemyA:
-                EnemyA_Behaviour();
-                break;
-            case EnemyType.EnemyB:
-                EnemyB_Behaviour();
-                break;
-            case EnemyType.BossEnemy:
-                break;
+            if (!GameManager.Get().IsGamePaused())
+            {
+                CalcTimePerShoot();
+
+                switch (myType)
+                {
+                    case EnemyType.EnemyA:
+                        EnemyA_Behaviour();
+                        break;
+                    case EnemyType.EnemyB:
+                        EnemyB_Behaviour();
+                        break;
+                    case EnemyType.BossEnemy:
+                        break;
+                }
+            }
         }
     }
 

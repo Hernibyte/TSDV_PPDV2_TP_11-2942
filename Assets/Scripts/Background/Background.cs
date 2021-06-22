@@ -1,15 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Background : MonoBehaviour
 {
     [SerializeField] float speed;
 
     void LateUpdate(){
-        transform.localPosition += new Vector3(0f, -speed, 0f);
+        if (GameManager.Get() != null)
+        {
+            if (!GameManager.Get().IsGamePaused())
+            {
+                transform.localPosition += new Vector3(0f, -speed, 0f);
 
-        if(transform.localPosition.y <= (0f - Screen.height))
-            transform.localPosition = Vector3.zero;
+                if (transform.localPosition.y <= (0f - Screen.height))
+                    transform.localPosition = Vector3.zero;
+            }
+        }
     }
 }

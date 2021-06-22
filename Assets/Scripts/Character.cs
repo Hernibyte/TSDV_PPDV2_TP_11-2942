@@ -151,8 +151,7 @@ public class Character : MonoBehaviour
             }
             lastPosSelected = true;
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos/* * Mathf.Sin(Time.deltaTime * speed)*/, (speed * 3) * Time.deltaTime);
-
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, (speed * 3) * Time.deltaTime);
         return targetPos;
     }
 

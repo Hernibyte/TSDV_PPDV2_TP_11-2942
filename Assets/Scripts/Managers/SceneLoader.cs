@@ -23,6 +23,9 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneByName(string nameScene)
     {
+        if (GameManager.Get() != null && GameManager.Get().IsGamePaused())
+            GameManager.Get().PauseGame();
+
         AudioManager.Get()?.Play("select");
         if(nameScene == "MainMenu")
         {

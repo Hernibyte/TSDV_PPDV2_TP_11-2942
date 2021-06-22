@@ -27,14 +27,20 @@ public class Bullet : MonoBehaviour
     }
 
     void LateUpdate(){
-        switch (myDirection)
+        if (GameManager.Get() != null)
         {
-            case Direction.Up:
-                transform.position += transform.up * speed;
-                break;
-            case Direction.Down:
-                transform.position += -transform.up * speed;
-                break;
+            if (!GameManager.Get().IsGamePaused())
+            {
+                switch (myDirection)
+                {
+                    case Direction.Up:
+                        transform.position += transform.up * speed;
+                        break;
+                    case Direction.Down:
+                        transform.position += -transform.up * speed;
+                        break;
+                }
+            }
         }
     }
 

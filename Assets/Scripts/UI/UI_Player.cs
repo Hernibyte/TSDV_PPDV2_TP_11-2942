@@ -6,16 +6,34 @@ public class UI_Player : MonoBehaviour
     [SerializeField] public TextMeshProUGUI points;
     [SerializeField] public TextMeshProUGUI typeShoot;
     [SerializeField] public TextMeshProUGUI amountNukes;
+    [SerializeField] public GameObject panelPause;
     [SerializeField] public Image lifeBar;
+
     private Player playerRef;
     void Start()
     {
         playerRef = FindObjectOfType<Player>();
         playerRef.updateDataUI += UpdateDataUI;
+        panelPause.SetActive(false);
+    }
+    private void Update()
+    {
+        if(GameManager.Get() != null)
+        {
+            if(GameManager.Get().IsGamePaused())
+                panelPause.SetActive(true);
+            else
+                panelPause.SetActive(false);
+        }
     }
     private void OnDisable()
     {
         playerRef.updateDataUI -= UpdateDataUI;
+    }
+
+    public void Pause_ResumeFromUI()
+    {
+        GameManager.Get()?.PauseGame();
     }
 
     public void UpdateDataUI()

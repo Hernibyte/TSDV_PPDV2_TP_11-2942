@@ -10,7 +10,13 @@ public class Meteorite : MonoBehaviour, IHittable
     [SerializeField] float localLive = 200f;
 
     void LateUpdate() {
-        transform.position += -transform.up * speed;
+        if (GameManager.Get() != null)
+        {
+            if (!GameManager.Get().IsGamePaused())
+            {
+                transform.position += -transform.up * speed;
+            }
+        }
     }
 
     public void TakeDamage(float _damage){
