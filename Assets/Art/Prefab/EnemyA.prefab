@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a759e9a71820e46b1e855706786853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 100
-  spawnPowerUpProbability: 100
+  energy: 50
+  spawnPowerUpProbability: 20
 --- !u!50 &3769743386129483389
 Rigidbody2D:
   serializedVersion: 4

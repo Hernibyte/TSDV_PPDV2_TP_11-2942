@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 0
-  timePerRespawn: 7
+  timePerRespawn: 4
   enemiesRespawned: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 1
-  timePerRespawn: 10
+  timePerRespawn: 9
   enemiesRespawned: 0
   pointA: {fileID: 1364271411}
   pointB: {fileID: 1284975326}
@@ -1402,21 +1402,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
         type: 3}
-      propertyPath: damage
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
-        type: 3}
-      propertyPath: energy
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
-        type: 3}
-      propertyPath: fireRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11729150262743856, guid: 11be5552e3e152b498f1ac3592ca9d47,
-        type: 3}
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 969072390}
@@ -1479,11 +1464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11729151075317237, guid: 11be5552e3e152b498f1ac3592ca9d47,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11be5552e3e152b498f1ac3592ca9d47, type: 3}

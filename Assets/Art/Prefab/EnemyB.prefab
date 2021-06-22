@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: 100
-  spawnPowerUpProbability: 100
+  spawnPowerUpProbability: 35
 --- !u!50 &2028528375376004772
 Rigidbody2D:
   serializedVersion: 4

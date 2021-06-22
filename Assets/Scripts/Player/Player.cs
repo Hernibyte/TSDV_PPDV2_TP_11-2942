@@ -23,7 +23,7 @@ public class Player : Character, IHittable
     private void Start()
     {
         restoreEnergy = energy;
-        shootType = GameManager.Get()?.GetPowerUpPerID(9);
+        shootType = GameManager.Get()?.GetPowerUpPerID(7);
         updateDataUI?.Invoke();
     }
 
