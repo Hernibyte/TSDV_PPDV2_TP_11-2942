@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 1
-  timePerRespawn: 1
+  timePerRespawn: 6
   enemiesRespawned: 0
   pointA: {fileID: 275723373}
   pointB: {fileID: 624585210}
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 0
-  timePerRespawn: 1
+  timePerRespawn: 4
   enemiesRespawned: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 0
-  timePerRespawn: 1
+  timePerRespawn: 4
   enemiesRespawned: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesIWillRespawn: 1
-  timePerRespawn: 1
+  timePerRespawn: 6
   enemiesRespawned: 0
   pointA: {fileID: 1805052025}
   pointB: {fileID: 1402609725}

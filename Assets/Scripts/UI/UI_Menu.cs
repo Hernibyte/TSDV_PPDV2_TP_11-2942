@@ -4,6 +4,13 @@ public class UI_Menu : MonoBehaviour
 {
     void Start()
     {
-        AudioManager.Get()?.Play("menu");
+        if(GameManager.Get() != null)
+        {
+            if (!GameManager.Get().GetIfSongMenuAlreadyStart())
+            {
+                AudioManager.Get()?.Play("menu");
+                GameManager.Get().SongMenuStarted();
+            }
+        }
     }
 }

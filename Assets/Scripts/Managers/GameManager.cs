@@ -39,7 +39,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int powerUpsTaked;
     [SerializeField] private int bulletsFired;
 
+    private bool menuSongPlaying;
 
+    public void SongMenuStarted()
+    {
+        menuSongPlaying = true;
+    }
+    public bool GetIfSongMenuAlreadyStart()
+    {
+        return menuSongPlaying;
+    }
     public void BulletShooted()
     {
         bulletsFired++;

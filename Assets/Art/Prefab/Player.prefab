@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Bits: 512
   explosionPrefab: {fileID: 2704033692591571297, guid: 2edd2993f09bd594aa771090cdad4bfc,
     type: 3}
-  energy: 100000
+  energy: 200
   damage: 50
   explosionAmount: 0
   powerUp:
