@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3422414208997741441}
   - component: {fileID: 3422414208997741455}
   - component: {fileID: 3422414208997741442}
+  - component: {fileID: -5275892126092252464}
   m_Layer: 10
   m_Name: 8.BurstShoot
   m_TagString: Untagged
@@ -98,7 +99,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 558ddfde6ff24a244a2ce0086b0db205, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,3 +148,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &-5275892126092252464
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422414208997741453}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: af02ed39053a3984a822dc3e8855480d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: af02ed39053a3984a822dc3e8855480d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

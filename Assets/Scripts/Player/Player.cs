@@ -7,7 +7,7 @@ public class Player : Character, IHittable
     int DamageIncrementAmount = 1;
     [SerializeField] public int explosionAmount = 0;
     [SerializeField] LayerMask powerUp;
-    [SerializeField] PowerUp shootType = null;
+    [SerializeField] public PowerUp shootType = null;
     [SerializeField] PowerUp consumible = null;
     [SerializeField] PowerUp pointsMultipler = null;
     [HideInInspector] public int pointsMultiplerAmount = 1;
@@ -24,6 +24,7 @@ public class Player : Character, IHittable
     {
         restoreEnergy = energy;
         shootType = GameManager.Get()?.GetPowerUpPerID(9);
+        updateDataUI?.Invoke();
     }
 
     void Update(){
@@ -54,8 +55,10 @@ public class Player : Character, IHittable
             energy -= damage;
 
         updateDataUI?.Invoke();
+        AudioManager.Get()?.Play("hit");
 
-        if(energy <= 0)
+
+        if (energy <= 0)
         {
             energy = 0;
             If_Die();
@@ -156,6 +159,7 @@ public class Player : Character, IHittable
         {
             PowerUp powerUpIn = collision.gameObject.GetComponent<PowerUp>();
 
+            AudioManager.Get()?.Play("power1");
             if (powerUpIn == null)
                 return;
 

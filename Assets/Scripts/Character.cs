@@ -41,6 +41,7 @@ public class Character : MonoBehaviour
         if(timer > fireRate * 0.5f)
         {
             GameManager.Get()?.BulletShooted();
+            AudioManager.Get()?.Play("shoot1");
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
             bulletGo.myDirection = Direction.Up;
             bulletGo.localDamage = _damage;
@@ -53,6 +54,7 @@ public class Character : MonoBehaviour
     void Shoot_Burst(ShootLayer _shootLayer, float _damage){
         if(timer > fireRate)
         {
+            AudioManager.Get()?.Play("shoot2");
             StartCoroutine(Burst(_shootLayer, _damage));
             timer = 0f;
         }
@@ -77,6 +79,7 @@ public class Character : MonoBehaviour
         {
             Quaternion a = new Quaternion(0f, 0f, -0.4f, 1f);
             Quaternion b = new Quaternion(0f, 0f, 1f, 1f);
+            AudioManager.Get()?.Play("shoot3");
 
             for (int i = 0; i < 8; i-=-1){
                 GameManager.Get()?.BulletShooted();

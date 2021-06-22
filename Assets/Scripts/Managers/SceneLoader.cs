@@ -23,6 +23,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneByName(string nameScene)
     {
+        AudioManager.Get()?.Play("select");
         SceneManager.LoadScene(nameScene);
     }
     public IEnumerator AsynchronousLoad(string scene)

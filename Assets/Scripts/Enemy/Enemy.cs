@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour, IHittable
         if(probValue <= spawnPowerUpProbability)
         {
             Instantiate(GameManager.Get()?.SpawnRandomPowerUp(), transform.position, Quaternion.identity);
+            AudioManager.Get()?.Play("power2");
         }
     }
 }

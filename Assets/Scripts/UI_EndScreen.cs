@@ -16,9 +16,11 @@ public class UI_EndScreen : MonoBehaviour
             {
                 case EndState.Win:
                     conditionState.text = "WIN";
+                    AudioManager.Get()?.Play("win");
                     break;
                 case EndState.Lose:
                     conditionState.text = "LOSE";
+                    AudioManager.Get()?.Play("lose");
                     break;
             }
         }
