@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 717595710486241139}
-        m_MethodName: ResumeGame
+        m_MethodName: Pause_ResumeFromUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1546,9 +1546,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6933843497692977658, guid: 5f49190aef14b6649ad3095fe0f7d1c5,
-          type: 3}
-        m_MethodName: PauseGame
+      - m_Target: {fileID: 717595710486241139}
+        m_MethodName: Pause_ResumeFromUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

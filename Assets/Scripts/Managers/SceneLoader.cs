@@ -51,6 +51,12 @@ public class SceneLoader : MonoBehaviour
 
         ao.allowSceneActivation = true;
     }
+    public bool CompareActuallyScene(string sceneName){
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName(sceneName))
+            return true;
+        else
+            return false;
+    }
     public void QuitApplication()
     {
 #if UNITY_EDITOR

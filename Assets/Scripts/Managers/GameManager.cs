@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public enum EndState
@@ -135,7 +136,39 @@ public class GameManager : MonoBehaviour
         enemiesDestroyed++;
 
         if (actualEnemiesAmount <= 0)
+            StartCoroutine(ChangeSceneTransition());
+    }
+
+    IEnumerator ChangeSceneTransition(){
+        Player player = FindObjectOfType<Player>();
+        yield return new WaitForSeconds(2f);
+
+        if(SceneLoader.Get().CompareActuallyScene("level2")){
             GameOver(false);
+        }
+        else{
+            for(int i = 0; i <= 200; i++){
+                player.transform.position = Vector3.Lerp(player.transform.position, new Vector3(0f, 0f, 0f), (float)i / 200f);
+                yield return new WaitForSeconds(0.02f);
+            }
+
+            for(int i = 0; i <= 200; i++){
+                player.transform.position = Vector3.Lerp(player.transform.position, new Vector3(0f, 800f, 0f), (float)i / 200f);
+                yield return new WaitForSeconds(0.02f);
+            }
+
+            BlackBackground blackBackground = FindObjectOfType<BlackBackground>();
+            Color tmp = blackBackground.GetSprite().color;
+            for(int i = 0; i < 80; i++){
+                tmp.a = (float)i / 80f;
+                blackBackground.GetSprite().color = tmp;
+                yield return new WaitForSeconds(0.02f);
+            }
+
+            SceneLoader.Get()?.LoadSceneByName("level2");
+        }
+
+        yield return null;
     }
 
     public PowerUp GetPowerUpPerID(int ID)
