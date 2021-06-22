@@ -17,12 +17,14 @@ public class Enemy : MonoBehaviour, IHittable
         if(energy <= 0f)
         {
             SpawnPowerUp();
-            GameManager.Get()?.AddPoints(100);
-            GameManager.Get()?.DecreaseEnemyCount();
             Destroy(gameObject);
         }
     }
-
+    private void OnDestroy()
+    {
+        GameManager.Get()?.AddPoints(100);
+        GameManager.Get()?.DecreaseEnemyCount();
+    }
     void SpawnPowerUp()
     {
         probValue = Random.Range(0, 100);

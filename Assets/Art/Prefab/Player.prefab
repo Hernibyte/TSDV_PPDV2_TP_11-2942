@@ -52,7 +52,7 @@ MonoBehaviour:
   timer: 0.5
   cameraShake: {fileID: 0}
   energy: 100000
-  damage: 60
+  damage: 50
   explosionAmount: 0
   powerUp:
     serializedVersion: 2
@@ -61,6 +61,7 @@ MonoBehaviour:
   consumible: {fileID: 0}
   pointsMultipler: {fileID: 0}
   pointsMultiplerAmount: 1
+  restoreEnergy: 0
 --- !u!60 &11729150262743857
 PolygonCollider2D:
   m_ObjectHideFlags: 0

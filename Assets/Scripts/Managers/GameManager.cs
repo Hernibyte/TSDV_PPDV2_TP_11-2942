@@ -35,14 +35,46 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int amountEnemiesPerLevel;
     [SerializeField] public int actualEnemiesAmount;
     [SerializeField] public EndState playerStateAtEnd;
+    [SerializeField] private int enemiesDestroyed;
+    [SerializeField] private int powerUpsTaked;
+    [SerializeField] private int bulletsFired;
 
+
+    public void BulletShooted()
+    {
+        bulletsFired++;
+    }
+    public int GetBulletShooted()
+    {
+        return bulletsFired;
+    }
+    public void IncreasePowerUPSTaked()
+    {
+        powerUpsTaked++;
+    }
+    public int GetAmountPowerUPSTaked()
+    {
+        return powerUpsTaked;
+    }
     public void AddPoints(int _points){
         Player player = FindObjectOfType<Player>();
         if(player != null){
             gamePoints += _points * player.pointsMultiplerAmount;
+            player.updateDataUI?.Invoke();
         }
     }
-
+    public int GetEnemiesDestroyed()
+    {
+        return enemiesDestroyed;
+    }
+    public EndState GetPlayerState()
+    {
+        return playerStateAtEnd;
+    }
+    public int GetPoints()
+    {
+        return gamePoints;
+    }
     public void SetActualAmountOfEnemies(int enemies)
     {
         actualEnemiesAmount += enemies;
@@ -63,7 +95,9 @@ public class GameManager : MonoBehaviour
         if (actualEnemiesAmount > 0)
             actualEnemiesAmount--;
 
-        if(actualEnemiesAmount <= 0)
+        enemiesDestroyed++;
+
+        if (actualEnemiesAmount <= 0)
             GameOver(false);
     }
 

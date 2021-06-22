@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     void Awake(){
         shootLayer = ShootLayer.Enemy;
-        scaleExplosion = new Vector3(50,50,1);
+        scaleExplosion = new Vector3(150,150,1);
     }
 
     void LateUpdate(){

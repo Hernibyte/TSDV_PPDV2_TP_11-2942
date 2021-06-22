@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
     {
         if(timer > fireRate * 0.5f)
         {
+            GameManager.Get()?.BulletShooted();
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
             bulletGo.myDirection = Direction.Up;
             bulletGo.localDamage = _damage;
@@ -48,6 +49,7 @@ public class Character : MonoBehaviour
 
     IEnumerator Burst(ShootLayer _shootLayer, float _damage){
         for(int i = 0; i < 3; i++){
+            GameManager.Get()?.BulletShooted();
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
             StartCoroutine(cameraShake.CameraShake(.2f, 2f));
             bulletGo.myDirection = Direction.Up;
@@ -66,6 +68,7 @@ public class Character : MonoBehaviour
             Quaternion b = new Quaternion(0f, 0f, 1f, 1f);
 
             for (int i = 0; i < 8; i-=-1){
+                GameManager.Get()?.BulletShooted();
                 Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), a);
                 bulletGo.myDirection = Direction.Up;
                 bulletGo.localDamage = _damage;

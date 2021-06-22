@@ -2,10 +2,10 @@
 
 public class Player : Character, IHittable
 {
-    [SerializeField] float energy = 100f;
-    [SerializeField] float damage = 10f;
+    [SerializeField] public float energy = 100f;
+    [SerializeField] public float damage = 10f;
     int DamageIncrementAmount = 1;
-    [SerializeField] int explosionAmount = 0;
+    [SerializeField] public int explosionAmount = 0;
     [SerializeField] LayerMask powerUp;
     [SerializeField] PowerUp shootType = null;
     [SerializeField] PowerUp consumible = null;
@@ -13,9 +13,15 @@ public class Player : Character, IHittable
     [HideInInspector] public int pointsMultiplerAmount = 1;
     float pointsMultiplerTimer = 0f;
     bool pointsMultiplerAppled = false;
+    public float restoreEnergy;
 
+    private bool restoringEnergy = false;
+
+    public delegate void UpdateUIPlayer();
+    public UpdateUIPlayer updateDataUI;
     private void Start()
     {
+        restoreEnergy = energy;
         shootType = GameManager.Get()?.GetPowerUpPerID(9);
     }
 
@@ -32,11 +38,14 @@ public class Player : Character, IHittable
     void LateUpdate()
     {
         Movement_Clamped(speed);
+        RestoreEnergy();
     }
 
     public void TakeDamage(float damage){
         if(energy > 0)
             energy -= damage;
+
+        updateDataUI?.Invoke();
 
         if(energy <= 0)
         {
@@ -49,6 +58,22 @@ public class Player : Character, IHittable
         GameManager.Get()?.GameOver(true);
     }
 
+    void RestoreEnergy()
+    {
+        if(restoringEnergy)
+        {
+            if (energy < restoreEnergy)
+            {
+                energy += (energy*0.25f) * Time.deltaTime;
+                updateDataUI?.Invoke();
+            }
+            else
+            {
+                energy = restoreEnergy;
+                restoringEnergy = false;
+            }
+        }
+    }
     void ApplyConsumible(){
         switch(consumible.specificType){
             case SpecificPowerUp.Explosion:
@@ -64,8 +89,7 @@ public class Player : Character, IHittable
 
             break;
             case SpecificPowerUp.RestoreEnergy:
-
-                energy = 100f;
+                restoringEnergy = true;
 
             break;
             case SpecificPowerUp.IncreamentFireRate:
@@ -147,7 +171,7 @@ public class Player : Character, IHittable
 
                     break;
             }
-
+            updateDataUI?.Invoke();
             Destroy(collision.gameObject);
         }
     }

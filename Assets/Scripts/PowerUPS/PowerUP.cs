@@ -38,4 +38,8 @@ public class PowerUp : MonoBehaviour
     {
         transform.position += -transform.up * speed;
     }
+    private void OnDestroy()
+    {
+        GameManager.Get()?.IncreasePowerUPSTaked();
+    }
 }

@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 6933843497692977658, guid: 5f49190aef14b6649ad3095fe0f7d1c5,
         type: 3}
       propertyPath: amountEnemiesPerLevel
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6933843497692977659, guid: 5f49190aef14b6649ad3095fe0f7d1c5,
         type: 3}
@@ -1212,7 +1212,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: level2
+          m_StringArgument: level1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1701422882
