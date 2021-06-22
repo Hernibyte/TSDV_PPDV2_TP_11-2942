@@ -34,6 +34,7 @@ public class SceneLoader : MonoBehaviour
         }
         else if(nameScene == "level1" || nameScene == "level2")
         {
+            GameManager.Get()?.ResetEnemiesCount();
             AudioManager.Get()?.StopAllSFX();
             AudioManager.Get()?.Play("game");
         }

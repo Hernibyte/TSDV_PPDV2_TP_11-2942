@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetEnemiesCount()
+    {
+        actualEnemiesAmount = 0;
+    }
     public bool IsGamePaused()
     {
         return gamePaused;
