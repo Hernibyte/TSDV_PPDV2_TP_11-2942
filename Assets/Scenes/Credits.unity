@@ -661,7 +661,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 934486650}
   m_HandleRect: {fileID: 934486649}
   m_Direction: 2
-  m_Value: 0.9036076
+  m_Value: 0.819353
   m_Size: 0.466405
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1260,17 +1260,26 @@ MonoBehaviour:
 
     Art on OpenGameArt.com
 
-    Carlos Alface
+    --------Sprites & UI--------
+
+    Carlos
+    Alface
 
     Lorc
 
+    Sfx on OpenGameArt.com
 
-    Sfx
-    on OpenGameArt.com
+    ----------------Sounds--------------
 
-    Michel Baradari
+    Michel
+    Baradari
 
-    Little Robot Sound Factory'
+    Little Robot Sound Factory
+
+    -------------Music-------------
+
+    WhiteBatAudio
+    on YouTube'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82065c402b4feeb44909aa130ac568af, type: 2}
   m_sharedMaterial: {fileID: 5339160045389768116, guid: 82065c402b4feeb44909aa130ac568af,
@@ -1581,7 +1590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 102.86908}
+  m_AnchoredPosition: {x: 0, y: 192.78473}
   m_SizeDelta: {x: 0, y: 2000}
   m_Pivot: {x: 0, y: 1}
 --- !u!111 &1803684585

@@ -1505,6 +1505,7 @@ GameObject:
   - component: {fileID: 1813712443}
   - component: {fileID: 1813712442}
   - component: {fileID: 1813712441}
+  - component: {fileID: 1813712445}
   m_Layer: 5
   m_Name: UI_MainMenu
   m_TagString: Untagged
@@ -1597,6 +1598,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1813712445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813712440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25291d51996bd2419d731d367c2d983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1816219504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,6 +1973,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2229b38ccdaca86479a8ac598039cd4f, type: 3}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[10].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4589cdfe4c15f11429ff54d0d124b251, type: 3}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[11].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[10].picth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[11].picth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524946630814705298, guid: 300ff5f0d6b5d9f4da61562560003908,
+        type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8524946630814705300, guid: 300ff5f0d6b5d9f4da61562560003908,
         type: 3}
       propertyPath: m_Name

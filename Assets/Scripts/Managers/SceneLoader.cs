@@ -24,6 +24,11 @@ public class SceneLoader : MonoBehaviour
     public void LoadSceneByName(string nameScene)
     {
         AudioManager.Get()?.Play("select");
+        if(nameScene == "level1" || nameScene == "level2")
+        {
+            AudioManager.Get()?.StopAllSFX();
+            AudioManager.Get()?.Play("game");
+        }
         SceneManager.LoadScene(nameScene);
     }
     public IEnumerator AsynchronousLoad(string scene)
