@@ -137,8 +137,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  explosionPref: {fileID: 2704033692591571309, guid: 2edd2993f09bd594aa771090cdad4bfc,
+    type: 3}
   localDamage: 20
-  localSprite: {fileID: 1278853898472910256}
 --- !u!61 &4268165580482228238
 BoxCollider2D:
   m_ObjectHideFlags: 0

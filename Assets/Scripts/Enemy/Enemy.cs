@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IHittable
         {
             SpawnPowerUp();
             GameManager.Get()?.AddPoints(100);
+            GameManager.Get()?.DecreaseEnemyCount();
             Destroy(gameObject);
         }
     }

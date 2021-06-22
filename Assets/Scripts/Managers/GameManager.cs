@@ -1,6 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum EndState
+{
+    Win, 
+    Lose 
+}
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -26,7 +32,9 @@ public class GameManager : MonoBehaviour
     [Header("PLAYER SCORE")]
     [SerializeField] int gamePoints = 0;
     [Header("ENEMIES IN LEVEL")]
-    [SerializeField] public int amountEnemiesLevel_1;
+    [SerializeField] public int amountEnemiesPerLevel;
+    [SerializeField] public int actualEnemiesAmount;
+    [SerializeField] public EndState playerStateAtEnd;
 
     public void AddPoints(int _points){
         Player player = FindObjectOfType<Player>();
@@ -35,10 +43,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetActualAmountOfEnemies(int enemies)
+    {
+        actualEnemiesAmount += enemies;
+    }
+
+    public void GameOver(bool isDead)
+    {
+        if (isDead)
+            playerStateAtEnd = EndState.Lose;
+        else
+            playerStateAtEnd = EndState.Win;
+
+        SceneLoader.Get()?.LoadSceneByName("EndScreen");
+    }
+
     public void DecreaseEnemyCount()
     {
-        if(amountEnemiesLevel_1 > 0)
-            amountEnemiesLevel_1--;
+        if (actualEnemiesAmount > 0)
+            actualEnemiesAmount--;
+
+        if(actualEnemiesAmount <= 0)
+            GameOver(false);
     }
 
     public PowerUp GetPowerUpPerID(int ID)

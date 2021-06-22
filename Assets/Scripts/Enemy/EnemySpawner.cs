@@ -17,7 +17,10 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesRespawned = 0;
         if (GameManager.Get() != null)
-            enemiesINeedRespawn = (int)(GameManager.Get().amountEnemiesLevel_1 * 0.5f);
+        {
+            enemiesINeedRespawn = (int)(GameManager.Get().amountEnemiesPerLevel * 0.5f);
+            GameManager.Get().SetActualAmountOfEnemies(enemiesINeedRespawn);
+        }
         timer = timePerRespawn;
     }
 

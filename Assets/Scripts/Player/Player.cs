@@ -35,13 +35,18 @@ public class Player : Character, IHittable
     }
 
     public void TakeDamage(float damage){
-        energy -= damage;
-        If_Die();
+        if(energy > 0)
+            energy -= damage;
+
+        if(energy <= 0)
+        {
+            energy = 0;
+            If_Die();
+        }
     }
 
     void If_Die(){
-        if(energy <= 0f)
-            Destroy(this.gameObject);
+        GameManager.Get()?.GameOver(true);
     }
 
     void ApplyConsumible(){

@@ -58,81 +58,86 @@ public class EnemyFSM : Character
 
     public void EnemyA_Behaviour()
     {
-        switch (myState)
+        if (targetEnemy != null)
         {
-            case EnemyState.GoingToTarget:
+            switch (myState)
+            {
+                case EnemyState.GoingToTarget:
 
-                if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
-                    lastPosTarget = Movement_Target(targetEnemy.transform.position, ref targetSet);
-                else
-                    myState = EnemyState.Attacking;
+                    if (Vector3.Distance(transform.position, lastPosTarget) >= distanceToGoBack)
+                        lastPosTarget = Movement_Target(targetEnemy.transform.position, ref targetSet);
+                    else
+                        myState = EnemyState.Attacking;
 
-                break;
-            case EnemyState.Attacking:
+                    break;
+                case EnemyState.Attacking:
 
-                Shoot_Target(targetEnemy.transform, ref readyToShoot);
-                myState = EnemyState.GoingBack;
+                    Shoot_Target(targetEnemy.transform, ref readyToShoot);
+                    myState = EnemyState.GoingBack;
 
-                break;
-            case EnemyState.GoingBack:
+                    break;
+                case EnemyState.GoingBack:
 
-                if (Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
-                    transform.position += new Vector3(0, speed * Time.deltaTime, 0);
-                else
-                {
-                    myState = EnemyState.GoingToTarget;
-                    targetSet = false;
-                }
-                break;
+                    if (Vector3.Distance(transform.position, lastPosTarget) <= distanceToGoTarget)
+                        transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+                    else
+                    {
+                        myState = EnemyState.GoingToTarget;
+                        targetSet = false;
+                    }
+                    break;
+            }
         }
     }
 
     public void EnemyB_Behaviour()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation,
-                            Quaternion.LookRotation(transform.forward, -targetEnemy.transform.position.normalized), speed * Time.deltaTime);
-
-        switch (myState)
+        if (targetEnemy != null)
         {
-            case EnemyState.GoingToTarget:
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation(transform.forward, -targetEnemy.transform.position.normalized), speed * Time.deltaTime);
+            switch (myState)
+            {
+                case EnemyState.GoingToTarget:
 
-                if (transform.position != lastPosTarget)
-                {
-                    if (myRespawnPoint != null)
-                        lastPosTarget = Movement_PointToPoint(respawnA.transform.position, respawnB.transform.position, myRespawnPoint, ref targetSet);
-                }
-                else
-                    myState = EnemyState.GoingBack;
-
-
-                if (transform.position.x >= (lastPosTarget.x * 0.2f) && !shootFlag)
-                    myState = EnemyState.Attacking;
-
-                //Debug.Log(lastPosTarget * 0.5f);
-                break;
-            case EnemyState.Attacking:
-
-                Shoot_Target(targetEnemy.transform, ref readyToShoot);
-
-                shootFlag = true;
-                myState = EnemyState.GoingToTarget;
-
-                break;
-            case EnemyState.GoingBack:
-                if (myRespawnPoint != null)
-                {
-                    if (transform.position != myRespawnPoint.transform.position)
+                    if (transform.position != lastPosTarget)
                     {
-                        transform.position = Vector3.MoveTowards(transform.position, myRespawnPoint.transform.position, (speed * 3) * Time.deltaTime);
+                        if (myRespawnPoint != null)
+                            lastPosTarget = Movement_PointToPoint(respawnA.transform.position, respawnB.transform.position, myRespawnPoint, ref targetSet);
                     }
                     else
+                        myState = EnemyState.GoingBack;
+
+
+                    if (transform.position.x >= (lastPosTarget.x * 0.2f) && !shootFlag)
+                        myState = EnemyState.Attacking;
+
+                    //Debug.Log(lastPosTarget * 0.5f);
+                    break;
+                case EnemyState.Attacking:
+
+                    Shoot_Target(targetEnemy.transform, ref readyToShoot);
+
+                    shootFlag = true;
+                    myState = EnemyState.GoingToTarget;
+
+                    break;
+                case EnemyState.GoingBack:
+                    if (myRespawnPoint != null)
                     {
-                        myState = EnemyState.GoingToTarget;
-                        targetSet = false;
-                        shootFlag = false;
+                        if (transform.position != myRespawnPoint.transform.position)
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, myRespawnPoint.transform.position, (speed * 3) * Time.deltaTime);
+                        }
+                        else
+                        {
+                            myState = EnemyState.GoingToTarget;
+                            targetSet = false;
+                            shootFlag = false;
+                        }
                     }
-                }
-                break;
+                    break;
+            }
         }
     }
 
