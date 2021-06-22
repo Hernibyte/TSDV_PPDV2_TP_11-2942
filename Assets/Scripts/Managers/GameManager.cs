@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
                 blackBackground.GetSprite().color = tmp;
                 yield return new WaitForSeconds(0.02f);
             }
-
+            player.StopAllCoroutines();
             SceneLoader.Get()?.LoadSceneByName("level2");
         }
 

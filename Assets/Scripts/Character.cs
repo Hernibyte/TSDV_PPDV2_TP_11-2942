@@ -48,7 +48,8 @@ public class Character : MonoBehaviour
             bulletGo.localDamage = _damage;
             bulletGo.shootLayer = _shootLayer;
             timer = 0f;
-            StartCoroutine(cameraShake?.CameraShake(.2f, 4f));
+            if(cameraShake != null)
+                StartCoroutine(cameraShake.CameraShake(.2f, 4f));
         }
     }
 
@@ -65,7 +66,8 @@ public class Character : MonoBehaviour
         for(int i = 0; i < 3; i++){
             GameManager.Get()?.BulletShooted();
             Bullet bulletGo = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + shootSpawnPosition, transform.position.z), Quaternion.identity);
-            StartCoroutine(cameraShake.CameraShake(.2f, 2f));
+            if(cameraShake != null)
+                StartCoroutine(cameraShake.CameraShake(.2f, 2f));
             bulletGo.myDirection = Direction.Up;
             bulletGo.localDamage = _damage;
             bulletGo.shootLayer = _shootLayer;
@@ -91,7 +93,8 @@ public class Character : MonoBehaviour
                 a = Quaternion.Lerp(a, b, 1f/10f);
             }
             timer = 0f;
-            StartCoroutine(cameraShake?.CameraShake(.2f, 4f));
+            if(cameraShake != null)
+                StartCoroutine(cameraShake.CameraShake(.2f, 4f));
         }
     }
     public void Shoot_Type(SpecificPowerUp _type, ShootLayer _shootLayer, float _damage)

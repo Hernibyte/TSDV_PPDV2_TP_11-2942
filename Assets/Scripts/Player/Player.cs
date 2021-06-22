@@ -22,9 +22,13 @@ public class Player : Character, IHittable
     public UpdateUIPlayer updateDataUI;
     private void Start()
     {
+        updateDataUI?.Invoke();
+    }
+
+    private void Awake()
+    {
         restoreEnergy = energy;
         shootType = GameManager.Get()?.GetPowerUpPerID(7);
-        updateDataUI?.Invoke();
     }
 
     void Update(){
