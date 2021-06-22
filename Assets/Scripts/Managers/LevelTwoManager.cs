@@ -23,7 +23,7 @@ public class LevelTwoManager : MonoBehaviour
 
         for(int i = 0; i < Random.Range(50, 85); i++){
             Meteorite meteor = Instantiate(Meteorite, new Vector3(Random.Range(-1030, 1030), 770, 0), Quaternion.identity);
-            float size = Random.Range(500, 850);
+            float size = Random.Range(200, 400);
             meteor.transform.localScale = new Vector3(size, size, 0f);
             meteor.localDamage = 40f;
             yield return new WaitForSeconds(0.3f);
