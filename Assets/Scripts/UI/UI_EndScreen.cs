@@ -26,7 +26,7 @@ public class UI_EndScreen : MonoBehaviour
         }
         pointsAllMatch.text = "Points: " + GameManager.Get()?.GetPoints();
         enemiesDestroyed.text = "Enemies Destroyed: " + GameManager.Get()?.GetEnemiesDestroyed();
-        powerUpsTaken.text = "Power UP Took: " + GameManager.Get()?.GetAmountPowerUPSTaked();
-        bulletsShooted.text = "Bullets Shooted: " + GameManager.Get()?.GetBulletShooted();
+        powerUpsTaken.text = "Power UP´s Taken: " + GameManager.Get()?.GetAmountPowerUPSTaked();
+        bulletsShooted.text = "Bullets Shot: " + GameManager.Get()?.GetBulletShooted();
     }
 }
