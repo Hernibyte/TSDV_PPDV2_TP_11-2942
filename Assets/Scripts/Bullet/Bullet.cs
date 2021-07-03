@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         scaleExplosion = new Vector3(150,150,1);
     }
 
-    void LateUpdate(){
+    void FixedUpdate(){
         if (GameManager.Get() != null)
         {
             if (!GameManager.Get().IsGamePaused())

@@ -14,7 +14,7 @@ public class Explosion : MonoBehaviour
         Destroy(gameObject, timer);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position += -transform.up * speed;
     }

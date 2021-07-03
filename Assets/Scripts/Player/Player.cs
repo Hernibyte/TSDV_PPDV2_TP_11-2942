@@ -56,7 +56,7 @@ public class Player : Character, IHittable
         }
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (GameManager.Get() != null)
         {

@@ -4,7 +4,7 @@ public class Background : MonoBehaviour
 {
     [SerializeField] float speed;
 
-    void LateUpdate(){
+    void FixedUpdate(){
         if (GameManager.Get() != null)
         {
             if (!GameManager.Get().IsGamePaused())
